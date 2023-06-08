@@ -39,3 +39,5 @@ def mainMenu():
     optionSelected: str = answers["firstOption"] # type: ignore
     validMenu( optionSelected )
 
+if __name__=='__main__':
+    mainMenu()

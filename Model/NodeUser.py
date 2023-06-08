@@ -1,6 +1,6 @@
 from Model.User import User
 
-class NodeUser:
+class NodeUser(object):
     
     __slost__ = 'user', 'next'
         

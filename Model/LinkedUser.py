@@ -51,10 +51,20 @@ class LinkedUser(object):
             auxNode.next = newNode
             self.size += 1
         
-    def show(self):
-        auxNode = self.head
+    def show(self) -> None:
+        """ Print each element in the linkedList """
+        auxNode: NodeUser = self.head
         auxNode.user.show()
         while auxNode.next is not None:
             auxNode = auxNode.next
             auxNode.user.show()
     
+    def findToValidate( self, email:str, password: str) -> User:
+        auxNode = self.head
+        while auxNode is not None:
+            if auxNode.user.password == password and auxNode.user.email == email:
+               return auxNode.user
+            auxNode = auxNode.next
+        return None
+    
+           

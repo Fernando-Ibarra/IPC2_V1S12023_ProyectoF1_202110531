@@ -6,15 +6,17 @@ import os
 from Model.User import User
 from Model.LinkedUser import LinkedUser
 from Model.NodeUser import NodeUser
+from Helpers.utils import list
+from View.InitialMenu.Login import LoginMenu
 
 name: str 
 lastName: str 
 phoneNUmber: str 
 email: str
 password: str
-rol: str = "Cliente"
+rol: str = "cliente"
 id: int = LinkedUser.totalSize + 1 # type: ignore
-list = LinkedUser()
+
 
 def __init__(self):
     pass
@@ -41,9 +43,10 @@ def RegisterMenu():
     email = answers["email"] # type: ignore
     password = answers["password"] # type: ignore
     
-    user: User = User( name, lastName, phoneNumber, email, password, rol, id )
+    user: User = User( name, lastName, phoneNumber, email, password, rol)
     nodeUser: NodeUser = NodeUser( user )
     list.push( nodeUser ) # type: ignore
-    list.show() # type: ignore
-
+    print(f" Tu usuario ha sido creado satisfactoriamente! ")
+    
+    LoginMenu()   
 
