@@ -16,7 +16,7 @@ choices = [
     "Salir"
 ]
 
-def toCrud( optionSelected: str = "Crear Usuario", user: User = None  ):
+def toCrud( optionSelected: str = "Crear Usuario", user: User = None  ): # type: ignore
     if ( optionSelected == choices[0] ):
         userMenu.createUser( user )
     elif ( optionSelected == choices[1] ):

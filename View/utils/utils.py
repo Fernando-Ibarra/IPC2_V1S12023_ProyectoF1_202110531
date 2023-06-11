@@ -20,6 +20,11 @@ choicesCreate = [
 ]
 
 choicesShowUser = [
+    "Volver otra vez",
+    "Salir"
+]
+
+choicesChangeUser = [
     "Cambiar algo más",
     "Salir"
 ]
@@ -35,6 +40,8 @@ choicesXMLUser = [
 
 def __init__(self):
     pass
+
+# * USER 
 
 def createUser( opt: int = 1) -> NodeUser:
     os.system('cls')
@@ -79,79 +86,6 @@ def createUser( opt: int = 1) -> NodeUser:
     nodeUser: NodeUser = NodeUser( user )
     
     return nodeUser
-
-def outShowOptionMenu() -> str:
-    print("")
-    questions = [
-        List(
-            name="out",
-            message="¿Qué deseas hacer?", 
-            choices=choicesShowUser,
-            default=choicesShowUser[0],
-        ),
-    ]
-    
-    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
-    out: str = answers["out"] # type: ignore
-    return out
-
-def outShowOptionMenu2() -> str:
-    print("")
-    questions = [
-        List(
-            name="out",
-            message="¿Qué deseas hacer?", 
-            choices=choicesShowUser,
-            default=choicesShowUser[0],
-        ),
-    ]
-    
-    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
-    out: str = answers["out"] # type: ignore
-    return out
-
-def outShowOptionMenu3() -> str:
-    print("")
-    questions = [
-        List(
-            name="out",
-            message="¿Qué deseas hacer?", 
-            choices=choicesDeleteUser,
-            default=choicesDeleteUser[0],
-        ),
-    ]
-    
-    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
-    out: str = answers["out"] # type: ignore
-    return out
-
-def outShowOptionMenu4() -> str:
-    print("")
-    questions = [
-        List(
-            name="out",
-            message="¿Qué deseas hacer?", 
-            choices=choicesXMLUser,
-            default=choicesXMLUser[0],
-        ),
-    ]
-    
-    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
-    out: str = answers["out"] # type: ignore
-    return out
-
-def selectIndexChange() -> int:
-    print("")
-    questions = [
-        Text(
-            name="index",
-            message="¿Cuál deseas seleccionar?",
-        ),
-    ]
-    
-    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
-    index: int = int(answers["index"]) # type: ignore
-    return index
 
 def configModify():
     
@@ -254,7 +188,7 @@ def configModify():
         answerRolC: list = prompt(rolC, theme=BlueComposure()) # type: ignore
         value = answerRolC["Rol"] # type: ignore
     else:
-        print("error chavo")
+        print("error")
     
     return field, value # type: ignore
     
@@ -275,3 +209,77 @@ def createUserFromXML() -> None:
         HelUtil.list.push( nodeUser )
     
 
+# * GENERAL
+
+def outShowOptionMenu() -> str:
+    print("")
+    questions = [
+        List(
+            name="out",
+            message="¿Qué deseas hacer?", 
+            choices=choicesShowUser,
+            default=choicesShowUser[0],
+        ),
+    ]
+    
+    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
+    out: str = answers["out"] # type: ignore
+    return out
+
+def outShowOptionMenu2() -> str:
+    print("")
+    questions = [
+        List(
+            name="out",
+            message="¿Qué deseas hacer?", 
+            choices=choicesChangeUser,
+            default=choicesShowUser[0],
+        ),
+    ]
+    
+    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
+    out: str = answers["out"] # type: ignore
+    return out
+
+def outShowOptionMenu3() -> str:
+    print("")
+    questions = [
+        List(
+            name="out",
+            message="¿Qué deseas hacer?", 
+            choices=choicesDeleteUser,
+            default=choicesDeleteUser[0],
+        ),
+    ]
+    
+    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
+    out: str = answers["out"] # type: ignore
+    return out
+
+def outShowOptionMenu4() -> str:
+    print("")
+    questions = [
+        List(
+            name="out",
+            message="¿Qué deseas hacer?", 
+            choices=choicesXMLUser,
+            default=choicesXMLUser[0],
+        ),
+    ]
+    
+    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
+    out: str = answers["out"] # type: ignore
+    return out
+
+def selectIndexChange() -> int:
+    print("")
+    questions = [
+        Text(
+            name="index",
+            message="¿Cuál deseas seleccionar?",
+        ),
+    ]
+    
+    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
+    index: int = int(answers["index"]) # type: ignore
+    return index

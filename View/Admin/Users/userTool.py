@@ -1,4 +1,3 @@
-from inquirer import Text
 from colorama import Fore
 import os
 
@@ -7,8 +6,6 @@ from Model.user.NodeUser import NodeUser
 from Model.user.User import User
 from Helpers.utils import list
 import View.Admin.crudUsers as userMenuAdmin
-
-
 
 def createUser( user: User ):
     os.system('cls')

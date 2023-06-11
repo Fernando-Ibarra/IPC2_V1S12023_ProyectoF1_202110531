@@ -13,7 +13,6 @@ choices = [
     "Gestionar Usuarios",
     "Gestionar Categorías",
     "Gestionar Películas",
-    "Gestionar Salas",
     "Gestionar Boletos Comprados", 
     "Salir"
 ]
@@ -24,8 +23,8 @@ def validMenu( optionSelected: str = "Iniciar Sesión", user: User = None ): # t
     elif ( optionSelected == choices[1] ):
         mainCrudCategories()
     elif ( optionSelected == choices[2] ):
-        mainCrudMovies()
-    elif ( optionSelected == choices[2] ):
+        mainCrudMovies( user )
+    elif ( optionSelected == choices[3] ):
         mainCrudSoldTickets()
     else:
         MenuInitial.mainMenu()

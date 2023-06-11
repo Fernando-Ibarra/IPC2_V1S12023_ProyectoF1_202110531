@@ -1,24 +1,22 @@
 from colorama import Fore
 
-from .NodeUser import NodeUser
-from .User import User
+from .NodeTheater import NodeTheater, Theater
 
-class LinkedUser(object):
+class LinkedListTheater(object):
     
-    def __init__(self) -> None:
-        """ Create an empty stack """
-        self.head: NodeUser = None # type: ignore
-        self.tail: NodeUser = None # type: ignore
-        self.size: int = 0
+    def __init__( self ) -> None:
+        self.head: NodeTheater = None # type: ignore
+        self.tail: NodeTheater = None # type: ignore
+        self.size = 0
         
     def __len__(self) -> int:
-        """ Return size methods
+       """ Return size methods
+       
+       Returns:
+           [ int ] - The number of elements in the stack
+       """
+       return self.size   
         
-        Returns:
-            [ int ] - The number of elements in the stack
-        """
-        return self.size
-    
     def totalLen(self):
         return len(self)
     
@@ -31,9 +29,8 @@ class LinkedUser(object):
         """
         return self.tail == None
     
-    
     # Add User #
-    def push(self, node: NodeUser) -> None:
+    def push(self, node: NodeTheater) -> None:
         """Add a new Node to the back of the stack
 
         Args:
@@ -52,34 +49,26 @@ class LinkedUser(object):
     def show(self) -> None:
         index = 1
         """ Print each element in the linkedList """
-        print(Fore.WHITE + "#     Nombre     Apellido     Telefono     Correo     Rol")
-        auxNode: NodeUser = self.head
-        auxNode.user.show(index)
+        print(Fore.WHITE + "#     Cine  ")
+        auxNode: NodeTheater = self.head
+        auxNode.theater.show(index)
         while auxNode.next is not None:
             index += 1
             auxNode = auxNode.next
-            auxNode.user.show(index)
-    
-    def findToValidate( self, email:str, password: str) -> User:
-        auxNode = self.head
-        while auxNode is not None:
-            if auxNode.user.password == password and auxNode.user.email == email:
-               return auxNode.user
-            auxNode = auxNode.next
-        return None
-    
-    def findUser( self, indexCome: int ) -> User:
+            auxNode.theater.show(index)
+            
+    def findTheater( self, indexCome: int ) -> Theater:
         index: int = 1
         auxNode = self.head
         while auxNode is not None:
             if ( index == indexCome ):
-                return auxNode.user
+                return auxNode.theater
             else:
                 auxNode = auxNode.next
                 index += 1
-        return None
+        return None # type: ignore
     
-    def findNode( self, indexCome: int ) -> NodeUser:
+    def findNode( self, indexCome: int ) -> NodeTheater:
         index: int = 1
         auxNode = self.head
         while auxNode is not None:
@@ -90,8 +79,8 @@ class LinkedUser(object):
                 index += 1
         return None # type: ignore
     
-    def deleteUser( self, indexCome: int ) -> None:
-        deleteNode: NodeUser = self.findNode( indexCome )
+    def deleteTheater( self, indexCome: int ) -> None:
+        deleteNode: NodeTheater = self.findNode( indexCome )
         if ( deleteNode is not None):
             auxNode = self.head
             while auxNode is not None:
@@ -106,32 +95,15 @@ class LinkedUser(object):
             return None
         else:
             return None
-
-    def modifyUser( self, indexCome: int, field: str, value ) -> None:
+        
+    def modifyUser( self, indexCome: int, name: str) -> None:
         index: int = 1
         auxNode = self.head
         while auxNode is not None:
             if( index == indexCome ):
-                if ( field == "name" ):
-                    auxNode.user.name = value
-                    return None
-                elif ( field == "lastName" ):
-                    auxNode.user.lastName = value
-                    return None
-                elif ( field == "phoneNUmber" ):
-                    auxNode.user.phoneNUmber = value
-                    return None
-                elif ( field == "email" ):
-                    auxNode.user.email = value
-                    return None
-                elif ( field == "password" ):
-                    auxNode.user.password = value
-                    return None
-                elif ( field == "rol" ):
-                    auxNode.user.rol = value
-                    return None
-                else:
-                    return None
+                auxNode.theater.nombre = name
+                return None
             else:
                 auxNode = auxNode.next
                 index += 1
+        return None
