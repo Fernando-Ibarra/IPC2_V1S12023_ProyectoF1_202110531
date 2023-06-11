@@ -2,7 +2,7 @@ from inquirer import List, prompt
 from inquirer.themes import BlueComposure
 import os
 
-from Model.User import User
+from Model.user.User import User
 from View.Admin.crudUsers import mainCrudUser
 from View.Admin.crudCategories import mainCrudCategories
 from View.Admin.crudMovies import mainCrudMovies
@@ -18,9 +18,9 @@ choices = [
     "Salir"
 ]
 
-def validMenu( optionSelected: str = "Iniciar Sesión" ):
+def validMenu( optionSelected: str = "Iniciar Sesión", user: User = None ): # type: ignore
     if ( optionSelected == choices[0] ):
-        mainCrudUser()
+        mainCrudUser( user )
     elif ( optionSelected == choices[1] ):
         mainCrudCategories()
     elif ( optionSelected == choices[2] ):
@@ -44,4 +44,4 @@ def MainMenu(user: User):
     
     answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
     optionSelected: str = answers["firstOption"] # type: ignore
-    validMenu( optionSelected )
+    validMenu( optionSelected, user )

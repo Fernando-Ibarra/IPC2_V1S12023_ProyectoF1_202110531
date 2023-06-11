@@ -1,10 +1,10 @@
-from Model.NodeMovieRoom import NodeMovieRoom
+from .NodeTheater import NodeTheater
 
-class DoubleLinkedListMovieRoom(object):
+class DoubleLinkedListTheater(object):
     
     def __init__( self ) -> None:
-        self.head: NodeMovieRoom = None # type: ignore
-        self.tail: NodeMovieRoom = None # type: ignore
+        self.head: NodeTheater = None # type: ignore
+        self.tail: NodeTheater = None # type: ignore
         self.lenght = 0
         
     def isEmpty( self ) -> bool:
@@ -12,7 +12,7 @@ class DoubleLinkedListMovieRoom(object):
     
     def push( self, node ):
         
-        newNode: NodeMovieRoom = node
+        newNode: NodeTheater = node
         
         if self.isEmpty():
             self.tail = self.head = newNode
@@ -23,7 +23,7 @@ class DoubleLinkedListMovieRoom(object):
         self.lenght += 1
         
     def show(self) -> None:
-        auxNode: NodeMovieRoom = self.tail
+        auxNode: NodeTheater = self.tail
         while auxNode:
-            print(f" Sala { auxNode.movieRoom.number } - Asienot { auxNode.movieRoom.seats } ")
+            print(f" Nombre { auxNode.theater.nombre } - Salas { auxNode.theater.rooms.show() } ") # type: ignore
             auxNode = auxNode.next # type: ignore

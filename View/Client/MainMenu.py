@@ -1,4 +1,4 @@
-from Model.User import User
+from Model.user.User import User
 
 def mainMenu(user: User):
     print("MENU CLIENTE")

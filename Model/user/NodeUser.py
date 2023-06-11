@@ -1,4 +1,4 @@
-from Model.User import User
+from .User import User
 
 class NodeUser(object):
     

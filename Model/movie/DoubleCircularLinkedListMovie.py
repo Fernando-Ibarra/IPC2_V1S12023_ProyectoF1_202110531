@@ -1,5 +1,5 @@
-from Model.Movie import Movie
-from Model.NodeMovie import NodeMovie
+from .Movie import Movie
+from .NodeMovie import NodeMovie
 
 class DoubleCircularLinkedListMovie(object):
     

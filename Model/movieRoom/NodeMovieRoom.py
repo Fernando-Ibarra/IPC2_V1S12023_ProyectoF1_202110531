@@ -1,4 +1,4 @@
-from Model.MovieRoom import MovieRoom
+from .MovieRoom import MovieRoom
 
 class NodeMovieRoom(object):
     

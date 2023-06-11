@@ -1,4 +1,4 @@
-from Model.Movie import Movie
+from .Movie import Movie
 
 class NodeMovie(object):
     

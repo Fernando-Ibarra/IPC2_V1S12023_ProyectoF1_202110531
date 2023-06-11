@@ -1,4 +1,3 @@
-from colorama import Fore, Back, Style
 import sys
 import os
 import inquirer

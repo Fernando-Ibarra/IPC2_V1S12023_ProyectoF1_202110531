@@ -1,4 +1,4 @@
-from Model.Theater import Theater
+from .Theater import Theater
 
 class NodeTheater(object):
     

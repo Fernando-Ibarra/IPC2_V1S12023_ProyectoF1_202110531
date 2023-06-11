@@ -1,3 +1,5 @@
+from colorama import Fore
+
 class User(object):
     """ This is a constructor of user's clss
     """
@@ -9,6 +11,6 @@ class User(object):
         self.email = email
         self.password = password
     
-    def show(self):
-        print(f"email: { self.email } ")
-        print(f"password: { self.password } ")
+    def show(self, index: int):
+        print(Fore.WHITE + f"{ index }      { self.name }    { self.lastName }    { self.phoneNUmber }     { self.email }      { self.rol }")
+        
