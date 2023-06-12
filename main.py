@@ -3,6 +3,8 @@ from Model.user.NodeUser import NodeUser
 from Helpers.utils import list
 import View.InitialMenu.MainMenu as mm
 from Model.theater.LinkedListTheater import LinkedListTheater
+from Model.category.CircularlyLinkedListCategory import CircularlyLinkedListCategory
+from Model.favMovie.favMovie import favMovie
 
 name: str 
 lastName: str 
@@ -12,6 +14,8 @@ password: str
 rol: str = "administrador"
 
 ListTheater = LinkedListTheater()
+ListCategory = CircularlyLinkedListCategory()
+listFavMovie: favMovie = [] # type: ignore
 
 def run():   
     user: User = User( "Fernando", "Ibarra", "49900123", "fi94457@gmail.com", "123", rol)

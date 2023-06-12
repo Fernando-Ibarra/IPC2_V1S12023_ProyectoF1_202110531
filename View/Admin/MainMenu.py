@@ -11,8 +11,8 @@ import View.InitialMenu.MainMenu as MenuInitial
 
 choices = [
     "Gestionar Usuarios",
-    "Gestionar Categorías",
-    "Gestionar Películas",
+    "Gestionar Categorías y Películas",
+    "Gestionar Cines y Salas",
     "Gestionar Boletos Comprados", 
     "Salir"
 ]
@@ -21,7 +21,7 @@ def validMenu( optionSelected: str = "Iniciar Sesión", user: User = None ): # t
     if ( optionSelected == choices[0] ):
         mainCrudUser( user )
     elif ( optionSelected == choices[1] ):
-        mainCrudCategories()
+        mainCrudCategories( user )
     elif ( optionSelected == choices[2] ):
         mainCrudMovies( user )
     elif ( optionSelected == choices[3] ):

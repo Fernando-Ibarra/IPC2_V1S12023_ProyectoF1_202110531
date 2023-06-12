@@ -93,6 +93,7 @@ def createMovieRoom( user: User, ):
     nodeTheater: NodeTheater = ListTheater.findNode( index )
     movieRoom: MovieRoom = util.createMovieRoom()
     nodeTheater.theater.rooms.push( movieRoom )
+    
     print(f" La sala ha sido creado satisfactoriamente! ")
     out:str = util.outShowOptionMenu( 1 )
     if( out == "Crear otro" ):
@@ -175,7 +176,7 @@ def importXML( user: User ):
     print(Fore.GREEN + "===========================")
     
     util.createDataFromXML()
-    print(f" La información ha sido Eliminado satisfactoriamente! ")
+    print(f"La información ha sido cargada satisfactoriamente! ")
     
     out:str = util.outShowOptionMenu( 5 )
     if( out == "Salir" ):

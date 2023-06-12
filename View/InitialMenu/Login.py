@@ -27,7 +27,7 @@ def LoginMenu():
     email = answers["email"] # type: ignore
     password = answers["password"] # type: ignore
     
-    user = list.findToValidate( email, password )
+    user = list.findToValidate( email.upper(), password )
     
     if user is not None:
         if user.rol == "administrador":

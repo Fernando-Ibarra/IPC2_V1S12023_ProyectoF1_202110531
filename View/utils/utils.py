@@ -166,7 +166,7 @@ def configModify():
         field = "password"
         
         passwordC = [
-            Text(
+            Password(
                 name="password",
                 message="Nuevo Contraseña"
             )

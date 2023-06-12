@@ -51,8 +51,8 @@ def modifyTheater() -> str:
 def createMovieRoom() -> MovieRoom:
     
     questions = [
-            Text(name='number', message="Número"),
-            Text(name='seats', message="Asientos"),
+        Text(name='number', message="Número"),
+        Text(name='seats', message="Asientos"),
     ]
     
     answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
@@ -128,6 +128,19 @@ def showMovieRooms( nodeTheater: NodeTheater ):
 
 # * GENERAL
 
+def selectIndexChange() -> int:
+    print("")
+    questions = [
+        Text(
+            name="index",
+            message="¿Cuál deseas seleccionar?",
+        ),
+    ]
+    
+    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
+    index: int = int(answers["index"]) # type: ignore
+    return index
+
 choicesCreate = [
     "Crear otro",
     "Salir"
@@ -151,19 +164,6 @@ choicesDelete = [
 choicesXML = [
     "Salir",
 ]
-
-def selectIndexChange() -> int:
-    print("")
-    questions = [
-        Text(
-            name="index",
-            message="¿Cuál deseas seleccionar?",
-        ),
-    ]
-    
-    answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
-    index: int = int(answers["index"]) # type: ignore
-    return index
 
 def outShowOptionMenu( opt: int = 1) -> str:
     print("")

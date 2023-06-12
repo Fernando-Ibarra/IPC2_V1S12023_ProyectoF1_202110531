@@ -5,6 +5,7 @@ from inquirer.themes import BlueComposure
 
 from View.InitialMenu.Login import LoginMenu
 from View.InitialMenu.Register import RegisterMenu
+from View.Admin.Categories.categoryTools import showMoviesMainMenu
 
 choices = [
     "Iniciar Sesión", 
@@ -19,7 +20,7 @@ def validMenu( optionSelected: str = "Iniciar Sesión" ):
     elif ( optionSelected == choices[1] ):
         RegisterMenu()
     elif ( optionSelected == choices[2] ):
-        print("Películas")
+        showMoviesMainMenu()
     else:
         sys.exit()
 
