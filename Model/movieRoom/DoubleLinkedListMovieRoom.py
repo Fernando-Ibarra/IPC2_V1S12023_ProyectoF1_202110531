@@ -7,10 +7,10 @@ class DoubleLinkedListMovieRoom(object):
     
     def __init__( self ) -> None:
         """ Create an empty list """
-        self.head: NodeMovieRoom = NodeMovieRoom( None, None, None ) # type: ignore
-        self.tail: NodeMovieRoom = NodeMovieRoom( None, None, None ) # type: ignore
-        self.head.next = self.tail
-        self.tail.prev = self.head
+        self.header: NodeMovieRoom = NodeMovieRoom( None, None, None ) # type: ignore
+        self.trailer: NodeMovieRoom = NodeMovieRoom( None, None, None ) # type: ignore
+        self.header.next = self.trailer
+        self.trailer.prev = self.header
         self.size = 0
         
     def __len__( self ):
@@ -34,7 +34,7 @@ class DoubleLinkedListMovieRoom(object):
         """
         return self.size == 0
     
-    def insertBetween( self, movieRoom: MovieRoom, predecessor, sucessor ) -> None:
+    def insertBetween( self, movieRoom: MovieRoom, predecessor: NodeMovieRoom, sucessor: NodeMovieRoom ) -> None:
         """insertBetween - Add movieRoom between two existing nodes and return new Node 
 
         Args:
@@ -46,12 +46,9 @@ class DoubleLinkedListMovieRoom(object):
             [ NodeMovieRoom ] - new NodeMovieRoom
         """
         newest = NodeMovieRoom( movieRoom, predecessor, sucessor )
-        if ( self.head is None ):
-            self.head = newest
-        else:
-            predecessor.next = newest
-            sucessor.prev = newest
-            self.size += 1
+        predecessor.next = newest
+        sucessor.prev = newest
+        self.size += 1
         return None
     
     def push( self, movieRoom: MovieRoom ) -> None:
@@ -60,7 +57,7 @@ class DoubleLinkedListMovieRoom(object):
         Args:
             movieRoom (MovieRoom): movieRoom object
         """
-        self.insertBetween( movieRoom, self.tail.prev, self.tail )
+        self.insertBetween( movieRoom, self.trailer.prev, self.trailer ) # type: ignore
         return None
     
     def deleteNode( self, node: NodeMovieRoom ) -> None:
@@ -77,24 +74,10 @@ class DoubleLinkedListMovieRoom(object):
         # deprecate Node
         node.prev = node.next = node.movieRoom = None # type: ignore
         return None
-    
-    def show( self ):
-        index: int = 0
-        """ Print each element in the linkedList """
-        print(Fore.WHITE + "#     Número     Asientos")
-        auxNode: NodeMovieRoom = self.head
-        if auxNode.movieRoom is not None:
-            index += 1
-            auxNode.movieRoom.show( index )
-        while auxNode.next is not None:
-            index += 1
-            auxNode = auxNode.next
-            auxNode.movieRoom.show( index )
-        return None
-    
+        
     def modifyMovieRoom( self, indexCome: int, field: str, value  ):
         index: int = 1
-        auxNode = self.head
+        auxNode = self.header
         while auxNode is not None:
             if( index == indexCome ):
                 if ( field == "number" ):
@@ -111,7 +94,7 @@ class DoubleLinkedListMovieRoom(object):
     
     def findNode( self, indexCome: int ) -> NodeMovieRoom:
         index: int = 1
-        auxNode: NodeMovieRoom = self.head
+        auxNode: NodeMovieRoom = self.header
         while auxNode is not None:
             if( index == indexCome ):
                 return auxNode

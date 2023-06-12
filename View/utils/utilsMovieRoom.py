@@ -1,10 +1,12 @@
 from inquirer import Text, prompt, List
 from inquirer.themes import BlueComposure
+from colorama import Fore
 import xml.etree.ElementTree as ET
 import os
 
 from Model.movieRoom.DoubleLinkedListMovieRoom import DoubleLinkedListMovieRoom, NodeMovieRoom, MovieRoom
 from Model.theater.NodeTheater import NodeTheater, Theater
+from main import ListTheater
 
 number: str
 seats: int
@@ -112,6 +114,17 @@ def modifyConfig():
     
     return field, value # type: ignore
 
+def showMovieRooms( nodeTheater: NodeTheater ):
+    indexShow = 0
+    lim = nodeTheater.theater.rooms.size + 2
+    print(Fore.WHITE + "#     Número     Asientos")
+    while indexShow <= lim:
+        nodeMovieRoom: NodeMovieRoom = nodeTheater.theater.rooms.findNode( indexShow )
+        if( nodeMovieRoom is not None ):
+            if ( nodeMovieRoom.movieRoom is not None ):
+                if ( nodeMovieRoom.movieRoom.number is not None and nodeMovieRoom.movieRoom.seats is not None ):
+                    print(Fore.WHITE + f"{ indexShow - 1 } {nodeMovieRoom.movieRoom.number}  { nodeMovieRoom.movieRoom.seats }")
+        indexShow += 1
 
 # * GENERAL
 
@@ -135,6 +148,9 @@ choicesDelete = [
     "Salir"
 ]
 
+choicesXML = [
+    "Salir",
+]
 
 def selectIndexChange() -> int:
     print("")
@@ -188,7 +204,32 @@ def outShowOptionMenu( opt: int = 1) -> str:
                 default=choicesDelete[0],
             ),
         ]
+    elif ( opt == 5):
+        questions = [
+            List(
+                name="out",
+                message="¿Qué deseas hacer?", 
+                choices=choicesXML,
+                default=choicesXML[0],
+            ),
+        ]
     
     answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
     out: str = answers["out"] # type: ignore
     return out
+            
+def createDataFromXML() -> None:
+    tree = ET.parse('listaCines.xml')
+    root = tree.getroot()
+
+    for cine in root.findall('cine'):
+        name: str = cine.find('nombre').text # type: ignore
+        room = DoubleLinkedListMovieRoom()
+        for sala in cine.findall('salas/sala'):
+            number: str = sala.find('numero').text # type: ignore
+            seats: int = int(sala.find('asientos').text) # type: ignore
+            movieRoom: MovieRoom = MovieRoom(number, seats)
+            room.push(movieRoom)
+        theater: Theater = Theater(name, room)
+        nodeTheater: NodeTheater = NodeTheater(theater)
+        ListTheater.push(nodeTheater)

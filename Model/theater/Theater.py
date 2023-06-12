@@ -6,5 +6,5 @@ class Theater(object):
         self.rooms = rooms
         
     def show( self, index: int ):
-        print(f"{ index }  Nombre { self.nombre }")
+        print(f"{ index } { self.nombre }")
         return None

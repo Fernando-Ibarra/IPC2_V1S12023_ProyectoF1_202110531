@@ -38,9 +38,7 @@ def toCrud( optionSelected: str = "Crear Cine", user: User = None ): # type: ign
     elif ( optionSelected == choices[7] ):
         movieMenu.deleteMovieRoom( user )
     elif ( optionSelected == choices[8] ):
-        print("IMPORTAR XML")
-        # TODO
-        # movieMenu.importXML( user )
+        movieMenu.importXML( user )
     elif ( optionSelected == choices[9] ):
         print("EXPOTAR XML")
         # TODO

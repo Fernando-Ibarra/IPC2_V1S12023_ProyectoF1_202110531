@@ -4,5 +4,5 @@ class MovieRoom(object):
         self.number = number
         self.seats = seats
         
-    def show( self, index: int ):
-        print(f"{ index }  Numero { self.number }  Asientos { self.seats }")
+    def show( self, index ):
+        print(f"{ index } Numero { self.number }  Asientos { self.seats }")
