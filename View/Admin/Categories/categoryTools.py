@@ -13,9 +13,9 @@ from Model.user.User import User
 
 def createCategory( user: User ) -> None:
     os.system('cls')
-    print(Fore.BLUE + "=========================================")
-    print(Fore.BLUE + "        Registrar Nueva Categoria        ")
-    print(Fore.BLUE + "=========================================")
+    print(Fore.LIGHTBLUE_EX + "=========================================")
+    print(Fore.LIGHTBLUE_EX + "        Registrar Nueva Categoria        ")
+    print(Fore.LIGHTBLUE_EX + "=========================================")
     
     category = util.createCategory()
     print(Fore.WHITE + f"El Categoria ha sido creado satisfactoriamente! ")
@@ -29,9 +29,9 @@ def createCategory( user: User ) -> None:
         
 def showCategories( user: User ) -> None:
     os.system('cls')
-    print(Fore.BLUE + "====================================")
-    print(Fore.BLUE + "       Categorias Registrados       ")
-    print(Fore.BLUE + "====================================")
+    print(Fore.LIGHTBLUE_EX + "====================================")
+    print(Fore.LIGHTBLUE_EX + "       Categorias Registrados       ")
+    print(Fore.LIGHTBLUE_EX + "====================================")
     
     ListCategory.show()
     
@@ -43,9 +43,9 @@ def showCategories( user: User ) -> None:
         
 def modifyCategory( user: User ) -> None:
     os.system('cls')
-    print(Fore.BLUE + "================================")
-    print(Fore.BLUE + "       Modificar Categoria      ")
-    print(Fore.BLUE + "================================")
+    print(Fore.LIGHTBLUE_EX + "================================")
+    print(Fore.LIGHTBLUE_EX + "       Modificar Categoria      ")
+    print(Fore.LIGHTBLUE_EX + "================================")
     ListCategory.show()
     
     index: int = util.selectIndexChange()
@@ -63,9 +63,9 @@ def modifyCategory( user: User ) -> None:
         
 def deleteCategory( user: User ) -> None:
     os.system('cls')
-    print(Fore.BLUE + "===============================")
-    print(Fore.BLUE + "       Eliminar Categoria      ")
-    print(Fore.BLUE + "===============================")
+    print(Fore.LIGHTBLUE_EX + "===============================")
+    print(Fore.LIGHTBLUE_EX + "       Eliminar Categoria      ")
+    print(Fore.LIGHTBLUE_EX + "===============================")
     ListCategory.show()
     
     index: int = util.selectIndexChange()
@@ -84,9 +84,9 @@ def deleteCategory( user: User ) -> None:
 
 def createMovie( user: User ) -> None:
     os.system('cls')
-    print(Fore.BLUE + "========================================")
-    print(Fore.BLUE + "        Registrar Nueva Película        ")
-    print(Fore.BLUE + "========================================")
+    print(Fore.LIGHTBLUE_EX + "========================================")
+    print(Fore.LIGHTBLUE_EX + "        Registrar Nueva Película        ")
+    print(Fore.LIGHTBLUE_EX + "========================================")
     ListCategory.show()
     
     index: int = util.selectIndexChange()
@@ -105,9 +105,9 @@ def createMovie( user: User ) -> None:
         
 def showMovies( user: User ) -> None:
     os.system('cls')
-    print(Fore.BLUE + "===================================")
-    print(Fore.BLUE + "        Película Registradas       ")
-    print(Fore.BLUE + "===================================")
+    print(Fore.LIGHTBLUE_EX + "===================================")
+    print(Fore.LIGHTBLUE_EX + "        Película Registradas       ")
+    print(Fore.LIGHTBLUE_EX + "===================================")
     ListCategory.show()
     index: int = util.selectIndexChange()
     
@@ -122,9 +122,9 @@ def showMovies( user: User ) -> None:
         
 def modifyMovie( user: User ) -> None:
     os.system('cls')
-    print(Fore.BLUE + "===============================")
-    print(Fore.BLUE + "       Modificar Película      ")
-    print(Fore.BLUE + "===============================")
+    print(Fore.LIGHTBLUE_EX + "===============================")
+    print(Fore.LIGHTBLUE_EX + "       Modificar Película      ")
+    print(Fore.LIGHTBLUE_EX + "===============================")
     ListCategory.show()
     
     index: int = util.selectIndexChange()
@@ -146,9 +146,9 @@ def modifyMovie( user: User ) -> None:
         
 def deleteMovie( user: User ) -> None:
     os.system('cls')
-    print(Fore.BLUE + "==============================")
-    print(Fore.BLUE + "       Eliminar Película      ")
-    print(Fore.BLUE + "==============================")
+    print(Fore.LIGHTBLUE_EX + "==============================")
+    print(Fore.LIGHTBLUE_EX + "       Eliminar Película      ")
+    print(Fore.LIGHTBLUE_EX + "==============================")
     ListCategory.show()
     
     index: int = util.selectIndexChange()
@@ -169,9 +169,9 @@ def deleteMovie( user: User ) -> None:
         
 def importXML( user: User ):
     os.system('cls')
-    print(Fore.BLUE + "===========================")
-    print(Fore.BLUE + "       Importando XML      ")
-    print(Fore.BLUE + "===========================")
+    print(Fore.LIGHTBLUE_EX + "===========================")
+    print(Fore.LIGHTBLUE_EX + "       Importando XML      ")
+    print(Fore.LIGHTBLUE_EX + "===========================")
     
     util.createDataFromXMLCa()
     print(f"La información ha sido cargada satisfactoriamente! ")
@@ -182,9 +182,9 @@ def importXML( user: User ):
         
 def showMoviesMainMenu() -> None:
     os.system('cls')
-    print(Fore.BLUE + "===================================")
-    print(Fore.BLUE + "        Película Registradas       ")
-    print(Fore.BLUE + "===================================")
+    print(Fore.LIGHTBLUE_EX + "========================")
+    print(Fore.LIGHTBLUE_EX + "        Películas       ")
+    print(Fore.LIGHTBLUE_EX + "========================")
     ListCategory.show()
     index: int = util.selectIndexChange()
     
@@ -196,3 +196,42 @@ def showMoviesMainMenu() -> None:
         showMoviesMainMenu()
     else:
         mainMenu.mainMenu()
+
+def showAllMovies():
+    os.system('cls')
+    print(Fore.LIGHTBLUE_EX + "========================")
+    print(Fore.LIGHTBLUE_EX + "        Películas       ")
+    print(Fore.LIGHTBLUE_EX + "========================")
+    
+    lim = ListCategory.size
+    index = 0
+    
+    while index <= lim:
+        nodeCategory: NodeCategory = ListCategory.findNode( index )
+        nodeCategory.category.movies.show()
+    
+    out:str = util.outShowOptionMenu( 2 )
+    if( out == "Mostrar otra vez" ):
+        showAllMovies()
+    else:
+        mainMenu.mainMenu()
+        
+def showMoviesMovieMenu() -> NodeCategory:
+    os.system('cls')
+    print(Fore.LIGHTBLUE_EX + "========================")
+    print(Fore.LIGHTBLUE_EX + "        Películas       ")
+    print(Fore.LIGHTBLUE_EX + "========================")
+    ListCategory.show()
+    index: int = util.selectIndexChange()
+    
+    nodeCategory: NodeCategory = ListCategory.findNode( index )
+    nodeCategory.category.movies.show()
+    return nodeCategory
+    
+def showMoviesTicketMenu():
+    
+    ListCategory.show()
+    index: int = util.selectIndexChange()
+    nodeCategory: NodeCategory = ListCategory.findNode( index )
+    nodeCategory.category.movies.show()
+    return nodeCategory

@@ -4,7 +4,7 @@ import os
 
 from Model.user.User import User
 from View.Admin.crudUsers import mainCrudUser
-from View.Admin.crudCategories import mainCrudCategories
+import View.Admin.crudCategories as categories
 from View.Admin.crudMovies import mainCrudMovies
 from View.Admin.crudSoldTickets import mainCrudSoldTickets
 import View.InitialMenu.MainMenu as MenuInitial 
@@ -21,7 +21,7 @@ def validMenu( optionSelected: str = "Iniciar Sesión", user: User = None ): # t
     if ( optionSelected == choices[0] ):
         mainCrudUser( user )
     elif ( optionSelected == choices[1] ):
-        mainCrudCategories( user )
+        categories.mainCrudCategories( user )
     elif ( optionSelected == choices[2] ):
         mainCrudMovies( user )
     elif ( optionSelected == choices[3] ):

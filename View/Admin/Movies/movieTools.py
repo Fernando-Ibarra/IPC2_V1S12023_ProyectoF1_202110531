@@ -84,9 +84,9 @@ def deleteTheater( user: User ) -> None:
 def createMovieRoom( user: User, ):
     os.system('cls')
     
-    print(Fore.GREEN + "====================================")
-    print(Fore.GREEN + "        Registrar Nueva Sala        ")
-    print(Fore.GREEN + "====================================")
+    print(Fore.LIGHTGREEN_EX + "====================================")
+    print(Fore.LIGHTGREEN_EX + "        Registrar Nueva Sala        ")
+    print(Fore.LIGHTGREEN_EX + "====================================")
     ListTheater.show()
     
     index: int = util.selectIndexChange()
@@ -104,9 +104,9 @@ def createMovieRoom( user: User, ):
 def showMovieRoom( user: User, ):
     # os.system('cls')
     
-    print(Fore.GREEN + "=================================")
-    print(Fore.GREEN + "        Salas Registradas        ")
-    print(Fore.GREEN + "=================================")
+    print(Fore.LIGHTGREEN_EX + "=================================")
+    print(Fore.LIGHTGREEN_EX + "        Salas Registradas        ")
+    print(Fore.LIGHTGREEN_EX + "=================================")
     ListTheater.show()
     
     index: int = util.selectIndexChange()
@@ -122,9 +122,9 @@ def showMovieRoom( user: User, ):
     
 def modifyMovieRoom( user: User ) -> None:
     os.system('cls')
-    print(Fore.GREEN + "===========================")
-    print(Fore.GREEN + "       Modificar Sala      ")
-    print(Fore.GREEN + "===========================")
+    print(Fore.LIGHTGREEN_EX + "===========================")
+    print(Fore.LIGHTGREEN_EX + "       Modificar Sala      ")
+    print(Fore.LIGHTGREEN_EX + "===========================")
     ListTheater.show()
     
     index: int = util.selectIndexChange()
@@ -147,9 +147,9 @@ def modifyMovieRoom( user: User ) -> None:
 
 def deleteMovieRoom( user: User ) -> None:
     os.system('cls')
-    print(Fore.GREEN + "==========================")
-    print(Fore.GREEN + "       Eliminar Sala      ")
-    print(Fore.GREEN + "==========================")
+    print(Fore.LIGHTGREEN_EX + "==========================")
+    print(Fore.LIGHTGREEN_EX + "       Eliminar Sala      ")
+    print(Fore.LIGHTGREEN_EX + "==========================")
     ListTheater.show()
     
     index: int = util.selectIndexChange()
@@ -171,9 +171,9 @@ def deleteMovieRoom( user: User ) -> None:
         
 def importXML( user: User ):
     os.system('cls')
-    print(Fore.GREEN + "===========================")
-    print(Fore.GREEN + "       Importando XML      ")
-    print(Fore.GREEN + "===========================")
+    print(Fore.LIGHTGREEN_EX + "===========================")
+    print(Fore.LIGHTGREEN_EX + "       Importando XML      ")
+    print(Fore.LIGHTGREEN_EX + "===========================")
     
     util.createDataFromXML()
     print(f"La información ha sido cargada satisfactoriamente! ")

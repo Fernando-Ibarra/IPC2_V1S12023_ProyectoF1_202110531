@@ -1,8 +1,11 @@
-from Model.movie.Movie import Movie
-from Model.user.User import User
-
 class favMovie(object):
     
-    def __init__(self, user: User, movie: Movie) -> None:
-        self.user = user
-        self.movie = movie
+    def __init__(self, name: str, lastName: str, email: str, title: str, director: str, year: str, date: str, time: str ) -> None:
+        self.name = name
+        self.lastName = lastName
+        self.email = email
+        self.title: str = title
+        self.director: str = director
+        self.year: str = year
+        self.date: str = date
+        self.time: str = time

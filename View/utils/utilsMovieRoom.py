@@ -125,7 +125,7 @@ def showMovieRooms( nodeTheater: NodeTheater ):
                 if ( nodeMovieRoom.movieRoom.number is not None and nodeMovieRoom.movieRoom.seats is not None ):
                     print(Fore.WHITE + f"{ indexShow - 1 } {nodeMovieRoom.movieRoom.number}  { nodeMovieRoom.movieRoom.seats }")
         indexShow += 1
-
+        
 # * GENERAL
 
 def selectIndexChange() -> int:

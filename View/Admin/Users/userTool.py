@@ -9,10 +9,9 @@ import View.Admin.crudUsers as userMenuAdmin
 
 def createUser( user: User ):
     os.system('cls')
-    
-    print(Fore.GREEN + "=======================================")
-    print(Fore.GREEN + "        Registrar Nuevo Usuario        ")
-    print(Fore.GREEN + "=======================================")
+    print(Fore.LIGHTMAGENTA_EX + "=======================================")
+    print(Fore.LIGHTMAGENTA_EX + "        Registrar Nuevo Usuario        ")
+    print(Fore.LIGHTMAGENTA_EX + "=======================================")
     
     nodeUser: NodeUser = util.createUser( 2 )
     list.push( nodeUser ) # type: ignore
@@ -21,9 +20,9 @@ def createUser( user: User ):
     
 def showUsers( user: User ):
     os.system('cls')
-    print(Fore.GREEN + "==================================")
-    print(Fore.GREEN + "       Usuarios Registrados       ")
-    print(Fore.GREEN + "==================================")
+    print(Fore.LIGHTMAGENTA_EX + "==================================")
+    print(Fore.LIGHTMAGENTA_EX + "       Usuarios Registrados       ")
+    print(Fore.LIGHTMAGENTA_EX + "==================================")
     
     list.show()
     out:str = util.outShowOptionMenu()
@@ -34,9 +33,9 @@ def showUsers( user: User ):
 
 def modifyUser( user: User ):
     os.system('cls')
-    print(Fore.GREEN + "==============================")
-    print(Fore.GREEN + "       Modificar Usuario      ")
-    print(Fore.GREEN + "==============================")
+    print(Fore.LIGHTMAGENTA_EX + "==============================")
+    print(Fore.LIGHTMAGENTA_EX + "       Modificar Usuario      ")
+    print(Fore.LIGHTMAGENTA_EX + "==============================")
     list.show()
     
     index: int = util.selectIndexChange()
@@ -53,9 +52,9 @@ def modifyUser( user: User ):
 
 def deleteUser( user: User ):
     os.system('cls')
-    print(Fore.GREEN + "=============================")
-    print(Fore.GREEN + "       Eliminar Usuario      ")
-    print(Fore.GREEN + "=============================")
+    print(Fore.LIGHTMAGENTA_EX + "=============================")
+    print(Fore.LIGHTMAGENTA_EX + "       Eliminar Usuario      ")
+    print(Fore.LIGHTMAGENTA_EX + "=============================")
     list.show()
     
     index: int = util.selectIndexChange()
@@ -71,9 +70,9 @@ def deleteUser( user: User ):
         
 def importXML( user: User ):
     os.system('cls')
-    print(Fore.GREEN + "===========================")
-    print(Fore.GREEN + "       Importando XML      ")
-    print(Fore.GREEN + "===========================")
+    print(Fore.LIGHTMAGENTA_EX + "===========================")
+    print(Fore.LIGHTMAGENTA_EX + "       Importando XML      ")
+    print(Fore.LIGHTMAGENTA_EX + "===========================")
     
     util.createUserFromXML()
     

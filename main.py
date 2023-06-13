@@ -15,10 +15,11 @@ rol: str = "administrador"
 
 ListTheater = LinkedListTheater()
 ListCategory = CircularlyLinkedListCategory()
-listFavMovie: favMovie = [] # type: ignore
+listFavMovie = [] # type: ignore
+listTicket = []
 
 def run():   
-    user: User = User( "Fernando", "Ibarra", "49900123", "fi94457@gmail.com", "123", rol)
+    user: User = User( "Fernando", "Ibarra", "49900123", "123", "123", rol)
     nodeUser: NodeUser = NodeUser( user )
     list.push( nodeUser ) # type: ignore
     mm.mainMenu()

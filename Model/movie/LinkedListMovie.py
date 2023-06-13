@@ -57,7 +57,7 @@ class LinkedListMovie(object):
             index += 1
             auxNode = auxNode.next
             auxNode.movie.show(index)
-    
+                
     def findMovie( self, indexCome: int ) -> Movie:
         index: int = 1
         auxNode = self.head

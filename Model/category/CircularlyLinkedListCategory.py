@@ -40,6 +40,8 @@ class CircularlyLinkedListCategory(object):
             tempNode.next = tempNode
             tempNode.prev = tempNode
             self.head = tempNode
+            self.size += 1
+            return None
         else:
             ultimo: NodeCategory = self.head.prev # type: ignore
 
@@ -48,7 +50,9 @@ class CircularlyLinkedListCategory(object):
 
             self.head.prev = tempNode
             ultimo.next = tempNode
-        self.size += 1
+            self.size += 1
+            return None
+        
         
     def show( self ):
         index = 1
@@ -101,6 +105,7 @@ class CircularlyLinkedListCategory(object):
                         newFirst.prev = lastOne
                         
                         auxNode.prev = auxNode.next = auxNode.category = None # type: ignore
+                        self.size -= 1
                         return None
                     
                     if( auxNode is not self.head ):

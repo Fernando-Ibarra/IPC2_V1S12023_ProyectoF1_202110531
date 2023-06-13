@@ -4,7 +4,7 @@ from colorama import Fore, Back, Style
 import os
 
 from Helpers.utils import list
-from View.Client.MainMenu import mainMenu
+import View.Client.MainMenu as client
 from View.Admin.MainMenu import MainMenu
 
 def __init__(self):
@@ -12,10 +12,9 @@ def __init__(self):
 
 def LoginMenu():
     os.system('cls')
-
-    print(Fore.GREEN + "===============================")
-    print(Fore.GREEN + "        Iniciar Sesión        ")
-    print(Fore.GREEN + "===============================")
+    print(Fore.LIGHTYELLOW_EX + "===============================")
+    print(Fore.LIGHTYELLOW_EX + "        Iniciar Sesión        ")
+    print(Fore.LIGHTYELLOW_EX + "===============================")
     
     questions = [
         Text(name='email', message="Correo Electrónico"),
@@ -27,12 +26,15 @@ def LoginMenu():
     email = answers["email"] # type: ignore
     password = answers["password"] # type: ignore
     
-    user = list.findToValidate( email.upper(), password )
+    user, ok = list.findToValidate( email, password )
+    
+    if ok is False:
+        print("Contraseña o correo invalido")
     
     if user is not None:
         if user.rol == "administrador":
             MainMenu( user )
         else:    
-            mainMenu( user )
+            client.MainMenu( user )
     else: 
         LoginMenu()

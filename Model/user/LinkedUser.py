@@ -60,13 +60,15 @@ class LinkedUser(object):
             auxNode = auxNode.next
             auxNode.user.show(index)
     
-    def findToValidate( self, email:str, password: str) -> User:
+    def findToValidate( self, email:str, password: str):
         auxNode = self.head
         while auxNode is not None:
             if auxNode.user.password == password and auxNode.user.email == email:
-               return auxNode.user
+               ok=True
+               return auxNode.user, ok
             auxNode = auxNode.next
-        return None
+        ok = False
+        return None, ok
     
     def findUser( self, indexCome: int ) -> User:
         index: int = 1

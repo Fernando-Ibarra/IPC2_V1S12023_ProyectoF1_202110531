@@ -16,7 +16,7 @@ def createCategory() -> Category:
     os.system('cls')
     
     questions = [
-            Text(name='name', message="Nombre"),
+        Text(name='name', message="Nombre"),
     ]
     
     answers: list = prompt(questions, theme=BlueComposure()) # type: ignore
