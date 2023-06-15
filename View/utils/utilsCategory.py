@@ -1,7 +1,7 @@
 from inquirer import Text, prompt, List
 from inquirer.themes import BlueComposure
-from colorama import Fore
 import xml.etree.ElementTree as ET
+from xml.dom import minidom
 import os
 
 from Model.category.Category import Category
@@ -270,3 +270,37 @@ def createDataFromXMLCa() -> None:
             
         category: Category = Category(name, movies)
         ListCategory.push(category)
+
+def createXMLFromData() -> None:
+    open('listaPeliculas.xml', 'w').close()
+    categorias = ET.Element('categorias')
+    index = 1
+    while index <= ListCategory.size:
+        categoria = ET.SubElement( categorias, 'categoria' )
+        node = ListCategory.findNode( index )
+        nombreD = node.category.name
+        nombreC = ET.SubElement( categoria, 'nombre' )
+        nombreC.text = nombreD
+        internalIndex = 1
+        peliculas = ET.SubElement( categoria, 'peliculas' )
+        while internalIndex <= node.category.movies.size + 1:
+            movie = node.category.movies.findMovie(internalIndex)
+            pelicula = ET.SubElement( peliculas, 'pelicula' )
+            nombre = ET.SubElement( pelicula, 'nombre' )
+            nombre.text = movie.title
+            director = ET.SubElement( pelicula, 'director' )
+            director.text = movie.director
+            anio = ET.SubElement( pelicula, 'anio' )
+            anio.text = movie.year
+            fecha = ET.SubElement( pelicula, 'fecha' )
+            fecha.text = movie.date
+            hora = ET.SubElement( pelicula, 'hora' )
+            hora.text = movie.date
+            internalIndex += 1
+        index += 1
+    rough_string = ET.tostring(categorias, 'utf-8')
+    reparsed = minidom.parseString( rough_string )
+    file = open('listaPeliculas.xml', 'w')
+    file.write(reparsed.toprettyxml(indent=" "))
+    file.close()
+    print(f"Archivo creado")

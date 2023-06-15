@@ -40,9 +40,7 @@ def toCrud( optionSelected: str = "Crear Categoria", user: User = None ): # type
     elif ( optionSelected == choices[8] ):
         categoryMenu.importXML( user )
     elif ( optionSelected == choices[9] ):
-        print("EXPOTAR XML")
-        # TODO
-        # movieMenu.importXML( user )
+        categoryMenu.exportXML( user )
     else:
         mainMenu.MainMenu( user )
 

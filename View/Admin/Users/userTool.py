@@ -83,3 +83,17 @@ def importXML( user: User ):
     if( out == "Salir" ):
         userMenuAdmin.mainCrudUser( user )
         
+def exmportXML( user: User ):
+    os.system('cls')
+    print(Fore.LIGHTMAGENTA_EX + "=========================")
+    print(Fore.LIGHTMAGENTA_EX + "       Exportar XML      ")
+    print(Fore.LIGHTMAGENTA_EX + "=========================")
+    
+    util.createXMLFromUser()
+    
+    print("Usuarios exportados Correctamente")
+    
+    out:str = util.outShowOptionMenu4()
+    if( out == "Salir" ):
+        userMenuAdmin.mainCrudUser( user )
+        

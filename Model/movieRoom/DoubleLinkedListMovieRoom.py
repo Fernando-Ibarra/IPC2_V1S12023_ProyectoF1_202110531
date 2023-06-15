@@ -92,12 +92,12 @@ class DoubleLinkedListMovieRoom(object):
                 auxNode = auxNode.next
                 index += 1
                 
-    def returnMovieRoom( self, indexCome: int ) -> MovieRoom: # type: ignore
+    def returnMovieRoom( self, indexCome: int ): # type: ignore
         index: int = 1
         auxNode = self.header
         while auxNode is not None:
             if( index == indexCome ):
-                return auxNode.movieRoom
+                return auxNode.movieRoom.number, auxNode.movieRoom.seats 
             else:
                 auxNode = auxNode.next
                 index += 1

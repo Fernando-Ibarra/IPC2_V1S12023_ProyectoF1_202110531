@@ -28,7 +28,7 @@ def toCrud( optionSelected: str = "Crear Usuario", user: User = None  ): # type:
     elif ( optionSelected == choices[4] ):
         userMenu.importXML( user )
     elif ( optionSelected == choices[5] ):
-        print("Expotar XML")
+        userMenu.exmportXML( user )
     else:
         mainMenu.MainMenu( user )
 

@@ -2,6 +2,7 @@ from inquirer import Text, prompt, List
 from inquirer.themes import BlueComposure
 from colorama import Fore
 import xml.etree.ElementTree as ET
+from xml.dom import minidom
 import os
 
 from Model.movieRoom.DoubleLinkedListMovieRoom import DoubleLinkedListMovieRoom, NodeMovieRoom, MovieRoom
@@ -233,3 +234,37 @@ def createDataFromXML() -> None:
         theater: Theater = Theater(name, room)
         nodeTheater: NodeTheater = NodeTheater(theater)
         ListTheater.push(nodeTheater)
+
+def createXMLFromData() -> None:
+    open('ListaCines.xml', 'w').close()
+    cines = ET.Element('cines')
+    index = 1
+    while index <= ListTheater.size + 1:
+        node = ListTheater.findNode( index )
+        cine = ET.SubElement( cines, 'cine' )
+        nombre = ET.SubElement( cine, 'nombre' )
+        nombre.text = node.theater.nombre
+        salas = ET.SubElement( cine, 'salas' )
+        internalIndex = 2
+        lim = node.theater.rooms.size + 2
+        room = node.theater.rooms
+        while internalIndex <= lim:
+            node = room.findNode( internalIndex )
+            if( node.movieRoom is None ):
+                internalIndex += 1
+            else:
+                number = node.movieRoom.number
+                seats = node.movieRoom.seats
+                sala = ET.SubElement( salas, 'sala' )
+                numero = ET.SubElement( sala, 'numero' )
+                numero.text = number
+                asientos = ET.SubElement( sala, 'asientos' )
+                asientos.text = str(seats)
+                internalIndex += 1
+        index += 1
+    rough_string = ET.tostring(cines, 'utf-8')
+    reparsed = minidom.parseString( rough_string )
+    file = open('ListaCines.xml', 'w')
+    file.write(reparsed.toprettyxml(indent=" "))
+    file.close()
+    print(f"Archivo creado")

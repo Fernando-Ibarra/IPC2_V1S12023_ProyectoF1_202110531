@@ -181,3 +181,16 @@ def importXML( user: User ):
     out:str = util.outShowOptionMenu( 5 )
     if( out == "Salir" ):
         movieMenuAdmin.mainCrudMovies( user )
+        
+def exportXML( user: User ):
+    os.system('cls')
+    print(Fore.LIGHTGREEN_EX + "===========================")
+    print(Fore.LIGHTGREEN_EX + "       Exportando XML      ")
+    print(Fore.LIGHTGREEN_EX + "===========================")
+    
+    util.createXMLFromData()
+    print(f"La información ha sido exportada satisfactoriamente! ")
+    
+    out:str = util.outShowOptionMenu( 5 )
+    if( out == "Salir" ):
+        movieMenuAdmin.mainCrudMovies( user )

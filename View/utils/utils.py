@@ -1,6 +1,7 @@
 from inquirer import Text, prompt, Password, List
 from inquirer.themes import BlueComposure
 import xml.etree.ElementTree as ET
+from xml.dom import minidom
 import os
 
 from Model.user.User import User
@@ -207,7 +208,40 @@ def createUserFromXML() -> None:
         user: User = User( name, lastName, phoneNumber, email, password, rol)
         nodeUser: NodeUser = NodeUser( user )
         HelUtil.list.push( nodeUser )
-    
+        
+def createXMLFromUser() -> None:
+    open('listaUsuarios.xml', 'w').close()
+    usuarios = ET.Element('usuarios')
+    index = 1
+    while index <= (HelUtil.list.size + 1) :
+        node = HelUtil.list.findNode( index )
+        nombreU = node.user.name
+        apellidoU = node.user.lastName
+        telefonoU = node.user.phoneNUmber
+        correoU = node.user.email
+        contrasenaU = node.user.password
+        rolU = node.user.rol
+        
+        usuario = ET.SubElement( usuarios, 'usuario' )
+        rol = ET.SubElement( usuario, 'rol' )
+        rol.text = rolU
+        nombre = ET.SubElement( usuario, 'nombre' )
+        nombre.text = nombreU
+        apellido = ET.SubElement( usuario, 'apellido' )
+        apellido.text = apellidoU
+        telefono = ET.SubElement( usuario, 'telefono' )
+        telefono.text = telefonoU
+        correo = ET.SubElement( usuario, 'correo' )
+        correo.text = correoU
+        contrasena = ET.SubElement( usuario, 'contrasena' )
+        contrasena.text = contrasenaU
+        index +=1
+    rough_string = ET.tostring(usuarios, 'utf-8')
+    reparsed = minidom.parseString( rough_string )
+    file = open('listaUsuarios.xml', 'w')
+    file.write(reparsed.toprettyxml(indent=" "))
+    file.close()
+    print(f"Archivo creado")
 
 # * GENERAL
 
@@ -233,7 +267,7 @@ def outShowOptionMenu2() -> str:
             name="out",
             message="¿Qué deseas hacer?", 
             choices=choicesChangeUser,
-            default=choicesShowUser[0],
+            default=choicesChangeUser[0],
         ),
     ]
     

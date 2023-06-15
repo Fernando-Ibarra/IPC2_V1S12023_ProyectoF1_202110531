@@ -7,7 +7,7 @@ class LinkedListTheater(object):
     def __init__( self ) -> None:
         self.head: NodeTheater = None # type: ignore
         self.tail: NodeTheater = None # type: ignore
-        self.size = 0
+        self.size: int = 0
         
     def __len__(self) -> int:
        """ Return size methods
@@ -98,6 +98,7 @@ class LinkedListTheater(object):
                         tempNode = deleteNode.next 
                         auxNode.next = tempNode
                         deleteNode = None # type: ignore
+                        self.size -= 1
                     else:
                         return None
                 auxNode = auxNode.next

@@ -1,7 +1,6 @@
 from colorama import Fore
 
-from .NodeUser import NodeUser
-from .User import User
+from .NodeUser import NodeUser, User
 
 class LinkedUser(object):
     
@@ -102,6 +101,7 @@ class LinkedUser(object):
                         tempNode = deleteNode.next 
                         auxNode.next = tempNode
                         deleteNode = None # type: ignore
+                        self.size -= 1
                     else:
                         return None
                 auxNode = auxNode.next

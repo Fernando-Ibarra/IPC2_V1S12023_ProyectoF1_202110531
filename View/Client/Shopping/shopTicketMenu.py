@@ -1,6 +1,6 @@
 from inquirer import List, prompt, Text, errors
 from inquirer.themes import BlueComposure
-from colorama import Fore
+from colorama import Fore, Back
 import os
 
 from Model.user.User import User
@@ -63,14 +63,14 @@ def mainShopTicketMenu( user: User ):
     res4: list = prompt(req4, theme=BlueComposure()) # type: ignore
     indexMovieRoom: int = int(res4["indexMovieRoom"]) # type: ignore
     
-    movieRoom: MovieRoom = nodeTheater.theater.rooms.returnMovieRoom( indexMovieRoom )
+    numberC, seatsC = nodeTheater.theater.rooms.returnMovieRoom( indexMovieRoom + 1 )
     
     def seat_validation( answers, current ):
-        if  1 <= int(current) <=movieRoom.seats:
+        if  int(current) <= seatsC:
             return True
         else:
             raise errors.ValidationError( '', reason="El asiento no esta en el rango" )
-    
+            
     req5 = [
         Text(
                 name='seats', 
@@ -109,10 +109,12 @@ def mainShopTicketMenu( user: User ):
             'fecha': movie.date,
             'hora': movie.time,
             'cantidad': amount,
-            'sala': movieRoom.number,
-            'asientos': seats,
+            'sala': numberC,
+            'asientos': seatsC,
             'total': amount*42,
             'nit': "C/F",
+            'Nombre': "C/F",
+            'dirección': "C/F",
             'nameUser': user.name,
             'lastNameUser': user.lastName,
             'emailUser': user.email,
@@ -146,8 +148,8 @@ def mainShopTicketMenu( user: User ):
             'fecha': movie.date,
             'hora': movie.time,
             'cantidad': amount,
-            'sala': movieRoom.number,
-            'asientos': seats,
+            'sala': numberC,
+            'asientos': seatsC,
             'total': amount*42,
             'nit': nitF,
             'Nombre': nombreF,
@@ -159,6 +161,25 @@ def mainShopTicketMenu( user: User ):
         }
         
     listTicket.append( obj_Ticket )
+    
+    print(Fore.LIGHTMAGENTA_EX + "=============================")
+    print(Fore.LIGHTMAGENTA_EX + "        USAC - CINEMA        ")
+    print(Fore.LIGHTMAGENTA_EX + "=============================")
+    
+    print(Fore.LIGHTYELLOW_EX + f"Id: { obj_Ticket['id'] }")
+                                  
+    print(Fore.LIGHTMAGENTA_EX + "======== Datos Película ========")
+    print(Fore.LIGHTRED_EX + f"Película: { obj_Ticket['película'] }")
+    print(Fore.LIGHTRED_EX + f"Sala: { obj_Ticket['sala'] }")
+    print(Fore.LIGHTRED_EX + f"Asientos: { obj_Ticket['asientos'] }")
+    print(Fore.LIGHTRED_EX + f"Fecha: { obj_Ticket['fecha'] } Hora: { obj_Ticket['hora'] }")
+    
+    print(Fore.LIGHTMAGENTA_EX + "======== Datos Factura ========")
+    print(Fore.LIGHTYELLOW_EX + f"NIT: { obj_Ticket['nit'] }  Nombre: { obj_Ticket['Nombre'] }")
+    print(Fore.LIGHTYELLOW_EX + f"Dirección: { obj_Ticket['dirección'] }")
+    print(Fore.LIGHTMAGENTA_EX + f"         Cantidad        Precio Unitario")
+    print(Fore.LIGHTYELLOW_EX + f"{ obj_Ticket['total'] / 42 }        Q42.00 ")
+    print(Fore.LIGHTGREEN_EX + f"              Total              { obj_Ticket['total'] }")
     
     questions = [
             List(
