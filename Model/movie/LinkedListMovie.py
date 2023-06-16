@@ -57,6 +57,17 @@ class LinkedListMovie(object):
             index += 1
             auxNode = auxNode.next
             auxNode.movie.show(index)
+            
+    def show2(self) -> None:
+        index = 1
+        """ Print each element in the linkedList """
+        auxNode: NodeMovie = self.head
+        auxNode.movie.show(index)
+        while auxNode.next is not None:
+            index += 1
+            auxNode = auxNode.next
+            auxNode.movie.show(index)
+    
                 
     def findMovie( self, indexCome: int ) -> Movie:
         index: int = 1

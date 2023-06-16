@@ -220,12 +220,14 @@ def showAllMovies():
     print(Fore.LIGHTBLUE_EX + "========================")
     
     lim = ListCategory.size
-    if ( lim != 0 ):
-        index = 0
-
+    if ( lim > 0 ):
+        index = 1
+        
+        print(Fore.WHITE + "#     Titulo     Director     Año     Fecha     Hora")
         while index <= lim:
             nodeCategory: NodeCategory = ListCategory.findNode( index )
-            nodeCategory.category.movies.show()
+            nodeCategory.category.movies.show2()
+            index += 1
     else:
         out:str = util.outShowOptionMenu( 2 )
     
