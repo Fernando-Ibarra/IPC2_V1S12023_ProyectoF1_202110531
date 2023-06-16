@@ -25,7 +25,7 @@ def validMenu( optionSelected: str = "Iniciar Sesión", user: User = None ): # t
     elif ( optionSelected == choices[2] ):
         mainCrudMovies( user )
     elif ( optionSelected == choices[3] ):
-        mainCrudSoldTickets()
+        mainCrudSoldTickets( user )
     else:
         MenuInitial.mainMenu()
 

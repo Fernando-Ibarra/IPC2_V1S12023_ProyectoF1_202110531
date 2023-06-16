@@ -12,7 +12,6 @@ from main import listFavMovie
 
 choices = [
     "Marcar alguna como favorita",
-    "Mostrar de nuevo",
     "Salir"
 ]
 
@@ -52,8 +51,5 @@ def mainMovieListMenu( user: User ):
         print("Película agregada a favoritos")
         
         mainMovieListMenu( user )
-        
-    elif ( optionSelected == choices[1] ):
-        print("Mostrar de nuevo")
     else:
         mainMenu.MainMenu( user )

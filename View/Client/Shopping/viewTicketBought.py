@@ -22,10 +22,15 @@ def viewTickets( user: User ):
     print(Fore.LIGHTRED_EX + "        Historial de Boletos Comprados       ")
     print(Fore.LIGHTRED_EX + "=============================================")
     
+    print(" Id                  Película          Fecha    Hora  Cantidad       Sala")
     for ticket in listTicket:
         if( ticket['nameUser'] == user.name and ticket['lastNameUser'] == user.lastName):
             if( ticket['emailUser'] == user.email):
-                print(Fore.LIGHTYELLOW_EX + f"{ ticket['id'] }  { ticket['película'] }  { ticket['fecha'] }  { ticket['hora'] } { ticket['cantidad'] } { ticket['sala'] }")
+                if( ticket['estado'] is not False):
+                    print(" Id                  Película          Fecha    Hora  Cantidad       Sala")
+                    print(Fore.LIGHTYELLOW_EX + f"{ ticket['id'] }  { ticket['película'] }  { ticket['fecha'] }  { ticket['hora'] } { ticket['cantidad'] } { ticket['sala'] }")
+                else:
+                    print(Fore.LIGHTYELLOW_EX + "No tiene Boletos activos")
     
     questions = [
             List(

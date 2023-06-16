@@ -22,7 +22,7 @@ def mainFavMovieMenu( user: User ):
     print("=========================")
     
     index = 0
-    print("#")
+    print("#   Nombre   Director   Año")
     for movie in listFavMovie:
         if( movie[0] == user.name and  movie[1] == user.lastName ):
             if( movie[2] == user.email ):

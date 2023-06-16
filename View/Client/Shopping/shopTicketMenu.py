@@ -47,7 +47,7 @@ def mainShopTicketMenu( user: User ):
     ListTheater.show()
     
     req3 = [
-        Text(name='numberIndex', message="¿Cuántos desea comprar"),
+        Text(name='numberIndex', message="¿Cúal desea seleccionar?"),
     ]    
     
     res3: list = prompt(req3, theme=BlueComposure()) # type: ignore
@@ -57,16 +57,16 @@ def mainShopTicketMenu( user: User ):
     showMovieRooms( nodeTheater )
     
     req4 = [
-        Text(name='indexMovieRoom', message="¿Cúal desea seleccionar"),
+        Text(name='indexMovieRoom', message="¿Cuántos desea comprar?"),
     ]    
     
     res4: list = prompt(req4, theme=BlueComposure()) # type: ignore
     indexMovieRoom: int = int(res4["indexMovieRoom"]) # type: ignore
     
-    numberC, seatsC = nodeTheater.theater.rooms.returnMovieRoom( indexMovieRoom + 1 )
+    numberC, seatsC = nodeTheater.theater.rooms.returnMovieRoom( indexMovieRoom + 1 ) # type: ignore
     
     def seat_validation( answers, current ):
-        if  int(current) <= seatsC:
+        if  0 <= int(current) <= seatsC:
             return True
         else:
             raise errors.ValidationError( '', reason="El asiento no esta en el rango" )

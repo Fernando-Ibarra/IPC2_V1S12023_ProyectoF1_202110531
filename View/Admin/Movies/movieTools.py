@@ -8,7 +8,6 @@ from Model.theater.LinkedListTheater import NodeTheater
 from Model.movieRoom.NodeMovieRoom import NodeMovieRoom, MovieRoom
 from Model.user.User import User
 
-
 # * THEATER
 
 def createTheater( user: User ) -> None:

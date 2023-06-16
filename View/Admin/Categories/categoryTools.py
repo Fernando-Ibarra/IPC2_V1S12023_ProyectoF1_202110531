@@ -201,8 +201,11 @@ def showMoviesMainMenu() -> None:
     ListCategory.show()
     index: int = util.selectIndexChange()
     
-    nodeCategory: NodeCategory = ListCategory.findNode( index )
-    nodeCategory.category.movies.show()
+    if( index == 15 ):
+        out:str = util.outShowOptionMenu( 2 )
+    else:
+        nodeCategory: NodeCategory = ListCategory.findNode( index )
+        nodeCategory.category.movies.show()
     
     out:str = util.outShowOptionMenu( 2 )
     if( out == "Mostrar otra vez" ):
@@ -217,11 +220,14 @@ def showAllMovies():
     print(Fore.LIGHTBLUE_EX + "========================")
     
     lim = ListCategory.size
-    index = 0
-    
-    while index <= lim:
-        nodeCategory: NodeCategory = ListCategory.findNode( index )
-        nodeCategory.category.movies.show()
+    if ( lim != 0 ):
+        index = 0
+
+        while index <= lim:
+            nodeCategory: NodeCategory = ListCategory.findNode( index )
+            nodeCategory.category.movies.show()
+    else:
+        out:str = util.outShowOptionMenu( 2 )
     
     out:str = util.outShowOptionMenu( 2 )
     if( out == "Mostrar otra vez" ):

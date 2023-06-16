@@ -78,7 +78,7 @@ class LinkedUser(object):
             else:
                 auxNode = auxNode.next
                 index += 1
-        return None
+        return None # type: ignore
     
     def findNode( self, indexCome: int ) -> NodeUser:
         index: int = 1

@@ -83,7 +83,7 @@ class DoubleLinkedListMovieRoom(object):
                 if ( field == "number" ):
                     auxNode.movieRoom.number = value
                     return None
-                elif ( field == "lastName" ):
+                elif ( field == "seats" ):
                     auxNode.movieRoom.seats = value
                     return None
                 else:

@@ -19,7 +19,7 @@ listFavMovie = [] # type: ignore
 listTicket = []
 
 def run():   
-    user: User = User( "Fernando", "Ibarra", "49900123", "123", "123", rol)
+    user: User = User( "Fernando", "Ibarra", "49900123", "fi94457@gmail.com", "123456", rol)
     nodeUser: NodeUser = NodeUser( user )
     list.push( nodeUser ) # type: ignore
     mm.mainMenu()
